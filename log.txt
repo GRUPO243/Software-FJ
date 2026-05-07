@@ -1,0 +1,2 @@
+2026-05-07 17:00:12,654 - ERROR - Error: Las horas deben ser mayores a 0
+2026-05-07 17:00:12,657 - ERROR - Error: El servicio no puede estar vacío

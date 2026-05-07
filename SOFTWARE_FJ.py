@@ -67,4 +67,206 @@ class Cliente(Persona):
         
     def get_cargo(self):
         return self.__cargo 
-#me quiero ir dormir por favor copera
+
+# En esta seccion se realizan las importaciones necesarias para el funcionamiento del modulo de servicios
+
+# Se importa ABC y abstractmethod para crear clases abstractas
+from abc import ABC, abstractmethod
+
+# Se importa logging para registrar errores en el archivo log
+import logging
+
+# CONFIGURACIÓN DEL LOG
+
+# Configuración del archivo de logs donde se almacenarán
+# los errores generados durante la ejecución del programa
+logging.basicConfig(
+    filename = "log.txt",
+    level = logging.ERROR,
+    format = "%(asctime)s - %(levelname)s - %(message)s"
+)
+
+# EXCEPCIONES PERSONALIZADAS
+
+# Clase principal para las validaciones de servicios
+class ServicioError(Exception):
+    pass
+
+# Validación para espacios vacíos
+class ServicioVacioError(ServicioError):
+    pass
+
+# Validación para valores numéricos inválidos
+class ValorServicioError(ServicioError):
+    pass
+
+# CLASE ABSTRACTA SERVICIO
+
+# Esta clase abstracta representa la estructura general
+# de cualquier servicio ofrecido por Software FJ.
+# No puede ser instanciada directamente.
+class Servicio(ABC):
+
+    def __init__(self, nombre):
+
+        # Validación para evitar nombres vacíos
+        if not nombre.strip():
+            raise ServicioVacioError("Error: El servicio no puede estar vacío")
+
+        self.nombre = nombre
+
+    # Método abstracto para calcular costos
+    @abstractmethod
+    def calcular_costo(self):
+        pass
+
+    # Método abstracto para describir servicios
+    @abstractmethod
+    def descripcion(self):
+        pass
+
+# CLASE SALA
+
+# Esta clase representa el servicio de reserva de salas.
+# Hereda de la clase abstracta Servicio.
+class Sala(Servicio):
+
+    def __init__(self, nombre, horas):
+
+        # Se hereda el atributo nombre desde Servicio
+        super().__init__(nombre)
+
+        # Validación de horas
+        if horas <= 0:
+            raise ValorServicioError("Error: Las horas deben ser mayores a 0")
+
+        self.horas = horas
+
+    # Implementación del cálculo del costo
+    def calcular_costo(self):
+        return self.horas * 50000
+
+    # Descripción del servicio
+    def descripcion(self):
+        return f"Sala '{self.nombre}' reservada por {self.horas} horas"
+
+# CLASE EQUIPO
+
+# Esta clase representa el servicio de alquiler de equipos.
+class Equipo(Servicio):
+
+    def __init__(self, nombre, dias):
+
+        super().__init__(nombre)
+
+        # Validación de días
+        if dias <= 0:
+            raise ValorServicioError("Error: Los días deben ser mayores a 0")
+
+        self.dias = dias
+
+    # Implementación del cálculo del costo
+    def calcular_costo(self):
+        return self.dias * 30000
+
+    # Descripción del servicio
+    def descripcion(self):
+        return f"Equipo '{self.nombre}' alquilado por {self.dias} días"
+
+# CLASE ASESORIA
+
+# Esta clase representa el servicio de asesorías especializadas.
+class Asesoria(Servicio):
+
+    def __init__(self, nombre, horas):
+
+        super().__init__(nombre)
+
+        # Validación de horas
+        if horas <= 0:
+            raise ValorServicioError("Error: Las horas deben ser mayores a 0")
+
+        self.horas = horas
+
+    # Implementación del cálculo del costo
+    def calcular_costo(self):
+        return self.horas * 80000
+
+    # Descripción del servicio
+    def descripcion(self):
+        return f"Asesoría '{self.nombre}' realizada por {self.horas} horas"
+
+# MÉTODO ADICIONAL (SOBRECARGA SIMULADA)
+
+# Esta función permite calcular el costo aplicando descuentos.
+# Ayuda a cumplir el requisito de métodos sobrecargados.
+def calcular_costo_descuento(servicio, descuento = 0):
+
+    # Validación del descuento
+    if descuento < 0 or descuento > 1:
+        raise ValorServicioError("Error: El descuento debe estar entre 0 y 1")
+
+    return servicio.calcular_costo() * (1 - descuento)
+
+# PRUEBAS DEL SISTEMA
+
+# Estas pruebas permiten demostrar el funcionamiento
+# correcto del módulo de servicios y el manejo de errores.
+
+try:
+
+    # Servicio válido
+    servicio1 = Sala("Sala VIP", 2)
+
+    print(servicio1.descripcion())
+    print("Costo:", servicio1.calcular_costo())
+
+    # Servicio válido con descuento
+    print("Costo con descuento:",
+          calcular_costo_descuento(servicio1, 0.2))
+
+except ServicioError as e:
+
+    # Registro del error en log.txt
+    logging.error(e)
+
+    print(e)
+
+
+try:
+
+    # Error: horas negativas
+    servicio2 = Sala("Sala Principal", -1)
+
+except ServicioError as e:
+
+    logging.error(e)
+
+    print(e)
+
+
+try:
+
+    # Error: nombre vacío
+    servicio3 = Equipo("", 3)
+
+except ServicioError as e:
+
+    logging.error(e)
+
+    print(e)
+
+
+try:
+
+    # Servicio válido
+    servicio4 = Asesoria("Marketing", 3)
+
+    print(servicio4.descripcion())
+    print("Costo:", servicio4.calcular_costo())
+
+except ServicioError as e:
+
+    logging.error(e)
+
+    print(e)
