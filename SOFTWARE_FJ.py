@@ -150,8 +150,7 @@ class AlquilerEquipo(Servicio):
         elif cargo == "Asociado":
             total *= 0.60  # 40% de descuento
             
-        # 2. Aplicar descuento extra (Sobrecarga técnica)
-        # Si el usuario pasa un descuento_extra, se aplica sobre el total
+        # 2. Aplicar descuento extra (Sobrecarga técnica) si el usuario pasa un descuento_extra, se aplica sobre el total
         if descuento_extra > 0:
             total -= (total * descuento_extra)
             
