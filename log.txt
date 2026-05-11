@@ -1,2 +1,32 @@
 2026-05-07 17:00:12,654 - ERROR - Error: Las horas deben ser mayores a 0
 2026-05-07 17:00:12,657 - ERROR - Error: El servicio no puede estar vac韔
+2026-05-09 21:24:06,637 - ERROR - Error: Las horas deben ser mayores a 0
+2026-05-09 21:24:06,638 - ERROR - Error: El servicio no puede estar vac韔
+2026-05-09 21:24:30,775 - ERROR - Error: Las horas deben ser mayores a 0
+2026-05-09 21:24:30,775 - ERROR - Error: El servicio no puede estar vac韔
+2026-05-09 21:24:53,476 - ERROR - Error: Las horas deben ser mayores a 0
+2026-05-09 21:24:53,485 - ERROR - Error: El servicio no puede estar vac韔
+2026-05-10 16:43:26,692 - INFO - Reserva CONFIRMADA - Cliente: Sergio Garcia - ID: 123456
+2026-05-10 16:43:26,693 - INFO - Reserva PROCESADA - Cliente: Sergio Garcia - Total: $41650.00 (IVA: 0.19)
+2026-05-10 17:12:57,525 - ERROR - Simulaci贸n - Op 2: Cliente con nombre inv谩lido: Error: El nombre no puede contener n煤meros.
+2026-05-10 17:12:57,530 - ERROR - Simulaci贸n - Op 4: Servicio con fecha err贸nea: Error: El formato de fecha debe ser AAAA-MM-DD (ej: 2026-05-01)
+2026-05-10 17:12:57,531 - INFO - Reserva CONFIRMADA - Cliente: Ana Maria - ID: 111111
+2026-05-10 17:12:57,531 - INFO - Reserva PROCESADA - Cliente: Ana Maria - Total: $200000.00 (IVA: 0.0)
+2026-05-10 17:12:57,533 - ERROR - Intento de confirmar reserva cancelada - ID: 222222
+2026-05-10 17:12:57,534 - ERROR - Simulaci贸n - Op 6: Error de Estado (Confirmar cancelada): Error: No se puede confirmar una reserva que ya fue cancelada.
+2026-05-10 17:12:57,536 - ERROR - Simulaci贸n - Op 7: Cliente menor de edad: Error: La edad est谩 fuera del rango permitido
+2026-05-10 17:12:57,538 - ERROR - Simulaci贸n - Op 8: Costo Base negativo: Error: El costo base debe ser un valor positivo
+2026-05-10 17:12:57,539 - ERROR - Simulaci贸n - Op 9: Equipo fuera de lista: Error: El equipo no se encuentra en la lista
+2026-05-10 17:13:04,429 - ERROR - Simulaci贸n - Op 2: Cliente con nombre inv谩lido: Error: El nombre no puede contener n煤meros.
+2026-05-10 17:13:04,430 - ERROR - Simulaci贸n - Op 4: Servicio con fecha err贸nea: Error: El formato de fecha debe ser AAAA-MM-DD (ej: 2026-05-01)
+2026-05-10 17:13:04,430 - INFO - Reserva CONFIRMADA - Cliente: Ana Maria - ID: 111111
+2026-05-10 17:13:04,431 - INFO - Reserva PROCESADA - Cliente: Ana Maria - Total: $200000.00 (IVA: 0.0)
+2026-05-10 17:13:04,432 - ERROR - Intento de confirmar reserva cancelada - ID: 222222
+2026-05-10 17:13:04,433 - ERROR - Simulaci贸n - Op 6: Error de Estado (Confirmar cancelada): Error: No se puede confirmar una reserva que ya fue cancelada.
+2026-05-10 17:13:04,434 - ERROR - Simulaci贸n - Op 7: Cliente menor de edad: Error: La edad est谩 fuera del rango permitido
+2026-05-10 17:13:04,434 - ERROR - Simulaci贸n - Op 8: Costo Base negativo: Error: El costo base debe ser un valor positivo
+2026-05-10 17:13:04,435 - ERROR - Simulaci贸n - Op 9: Equipo fuera de lista: Error: El equipo no se encuentra en la lista
+2026-05-10 17:19:52,540 - CRITICAL - Interfaz - Cr铆tico: '<=' not supported between instances of 'str' and 'int'
+2026-05-10 17:27:10,905 - CRITICAL - Interfaz - Cr铆tico: '<=' not supported between instances of 'str' and 'int'
+2026-05-10 17:28:11,511 - INFO - Reserva CONFIRMADA - Cliente: sergio - ID: 123456
+2026-05-10 17:28:11,511 - INFO - Reserva PROCESADA - Cliente: sergio - Total: $90000.00 (IVA: 0.0)
